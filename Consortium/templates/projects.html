@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+	<!-- This page contains your existing projects, and also allows you to create or join a project. The tile design was inspired by
+	the flat design trends in modern web design at the moment. I used thumbnail tiles for this, which I have changed the look of, and I have
+	arranged them in a column system to give the square of four existing projects that you see on the left of the screen. The forms used are 
+	similar to those used to login/register. The line down the middle was actually put in place as a left border on the column containing the
+	forms as a trick to have it line up better than it would if I were to just include a vertical line. -->
+	
+	
+	{% block head %}
+	
+	<!-- CSS which corresponds to this page, which I put together from various bootstrap elements, as well as some other elements -->
+    <link href="{{ STATIC_URL }}css/project.css" rel="stylesheet">
+	
+	{% endblock %}
+
+
+
+	{% block content %}
+	
+	
+<div id="container" style="width:100%;">
+	
+	<div class="row">
+
+
+		<!-- Tiles -->
+		
+		<div class="col-xs-11 col-md-5 col-md-offset-1 , projTiles"> 
+  
+			<h1>{{Username}}'s Projects:</h1>  
+  
+			<div class="row">	
+			<div class="col-xs-5 col-md-4">
+			<div class="thumbnail tile tile-medium tile-newCol">
+				<a href="http://danu6.it.nuigalway.ie:8667/projects/{{pName1}}/">
+					<h2>{{pName1}}</h2>
+				</a>
+			</div>
+		
+			<div class="thumbnail tile tile-medium tile-silver">
+				<a href="http://danu6.it.nuigalway.ie:8667/projects/{{pName3}}/" >
+					<h2>{{pName3}}</h2>
+				</a>
+			
+			</div>	
+			</div>
+		
+			<div class="col-xs-5 col-xs-offset-1 col-md-4">
+			<div class="thumbnail tile tile-medium tile-silver">
+				<a href="http://danu6.it.nuigalway.ie:8667/projects/{{pName2}}/" >
+					<h2>{{pName2}}</h2>
+				</a>
+			</div>
+		
+			<div class="thumbnail tile tile-medium tile-newCol">
+				<a href="http://danu6.it.nuigalway.ie:8667/projects/{{pName4}}/" >
+					<h2>{{pName4}}</h2>
+				</a>
+			</div>
+			</div>
+			
+			</div>
+		
+		</div>
+		
+     
+
+
+
+		<!-- Create project form, similar to the login/register forms, this is a bootstrap form that has been altered -->
+   
+		<div class="col-xs-12  col-md-5 , projCre8"> 
+   	
+   
+			<h1>Create a Project:</h1>
+			<form class="form-horizontal" action="/accounts/addProject/" method="post">
+			{% csrf_token %}
+			<fieldset>
+				<legend></legend>
+				<div class="form-group">{% csrf_token %}
+					<label for="pname" class="col-md-3 control-label">Project Name</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" id="pname" name="pname" placeholder="Project Name">
+					</div>
+				</div>
+				<div class="form-group">{% csrf_token %}
+					<label for="ppassword" class="col-md-3 control-label">Password</label>
+					<div class="col-md-5">
+						<input type="password" class="form-control" id="ppassword" name="ppassword" placeholder="Project Password">
+					</div>
+				</div>
+				<div class="form-group">{% csrf_token %}
+					<label for="pabout" class="col-md-3 control-label">Project Description</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" id="pabout" name="pabout" placeholder="Description (160 char)">
+					</div>
+				</div>
+				
+				
+				<div class="form-group">{% csrf_token %}
+					<div class="col-md-4 col-md-offset-3">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</fieldset>
+			</form>
+	
+	
+	
+	
+	
+	
+	
+			<!-- Join project form, similar to the login/register forms, this is a bootstrap form that has been altered -->
+	
+			<h1>Join Existing Project:</h1>   
+			<form class="form-horizontal" action="/accounts/joinProjectRequest/" method="post">
+			{% csrf_token %}
+			<fieldset>
+				<legend></legend>
+				<div class="form-group">{% csrf_token %}
+					<label for="pname" class="col-md-3 control-label">Project Name</label>
+					<div class="col-lg-5">
+						<input type="text" class="form-control" id="pname" name="pname" placeholder="Project Name">
+					</div>
+				</div>
+				<div class="form-group">{% csrf_token %}
+					<label for="ppassword" class="col-md-3 control-label">Password</label>
+					<div class="col-lg-5">
+						<input type="password" class="form-control" id="ppassword" name="ppassword" placeholder="Password">
+					</div>
+				</div>
+				<div class="form-group">{% csrf_token %}
+					<div class="col-lg-4 col-lg-offset-3">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</fieldset>
+			</form>
+		
+		</div>	
+	
+	</div>
+</div>
+ 
+
+	{% endblock %}

@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+	{% block head %}
+	
+	<!-- CSS which corresponds to this page, which I put together from various bootstrap elements -->
+    <link href="{{ STATIC_URL }}css/pName.css" rel="stylesheet">
+	
+	{% endblock %}
+
+
+
+	{% block content %}
+	
+	
+<!-- Code for the header of the page, including name, description, and a button to the previous page for navigation -->
+	
+<div class="conHeader">
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<div class="col-md-12">
+				<h1>{{pName}}
+				<span style="float:right">
+				<a href="http://danu6.it.nuigalway.ie:8667/projects/" class="btn btn-primary">Back to Project&raquo </a></h1>
+				<hr />
+				<p>Project Description: {{pAbout}}</p>
+			</div> 
+		</div>
+	
+	</div>
+		
+</div>
+
+
+
+
+<!-- I used bootstrap's panels to create this section. I positioned and sized the panels using the grid system that bootstrap utilises. Panels 
+also stack nicely on mobile sites-->
+
+
+<div class="container">
+	<div class="row" style="margin-top:35px;">
+	
+		<div class="col-xs-12 col-md-6">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Your Tasks and Deadlines</h3>
+				</div>
+				<div class="panel-body" style="margin-top:20px">
+					Your top tasks and due dates:<hr />
+					
+						{% for task in pTasks %}  <!-- Dynamic List of your tasks -->	
+							<br />Task Description: {{task.descr}} <br /> Due: {{task.date}}<br />			
+						{% endfor %}
+					<br />
+					<a href="http://danu6.it.nuigalway.ie:8667/projects/{{pName}}/tasks/" class="btn btn-primary">Go to Task Manager &raquo</a>
+				</div>
+			</div>
+		</div>	
+		
+		<div class="col-xs-12 col-md-2">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Members</h3>
+				</div>
+				<div class="panel-body" style="margin-top:20px">
+					A list of member names: 
+					<table>
+					<br /><br />
+					{% for name in pMembers %}
+					<tr>{{name}}</tr>
+					<br />
+					{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>	
+		
+	</div>	
+</div>
+	
+	
+	
+	
+<!-- This is code for the front end of the chat window. Unfortunately we were unable to get the back end working in time, but this is the front 
+end I added for it. It was based off of a chat window tutorial I found that I edited down and formatted to look better on screen, and removed unnecessary add-ons.
+I also modified parts of the code. As it is locked on to the bottom of the screen, positioning this took more effort than initially anticipated.
+I only wanted to use code that I myself could understand and reproduce, and did not want to just rip code/templates from the internet. This chat window
+worked off of bootstrap, and the initial tutorial was on a bootstrap tutorial site before I changed a lot of the css/html myself.
+I also changed images for it, again using CC0 images free of copyright.  -->	
+	
+
+	<div class="container">
+    <div class="row chat-window col-xs-12 col-md-4 col-md-offset-7" id="chat_window_1" style="margin-right:0px;">
+        <div class="col-xs-12 col-md-12">
+        	<div class="panel panel-default">
+                
+				<div class="panel-heading top-bar">
+                    <div class="col-md-8 col-xs-8">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Group Chat</h3>
+                    </div>
+                    <div class="col-md-4 col-xs-4" style="text-align: right;">
+                        <a href="#"><span id="minim_chat_window" class="glyphicon glyphicon-minus icon_minim"></span></a>
+                        
+					</div>
+                </div>
+                
+				
+				<div class="panel-body msg_container_base">
+				
+				
+				
+                    <div class="row msg_container base_sent">
+                        <div class="col-md-10 col-xs-10">
+                            <div class="messages msg_sent">
+                                <p>Mar a dear an seanfhocail, níl aon thintean mar to thintean fein</p>
+                                <time datetime="2009-11-13T20:00"> PersonA • 3:42am </time>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 avatar">
+                            <img src="{{STATIC_URL}}img/user1.png" - black class=" img-responsive ">
+                        </div>
+                    </div>
+					
+					
+					
+                    <div class="row msg_container base_receive">
+                        <div class="col-md-2 col-xs-2 avatar">
+                            <img src="{{STATIC_URL}}img/user2.png" - black class=" img-responsive ">
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="messages msg_receive">
+                                <p>Bhí mé ar mhuin na muice gan dabht lnuair a 
+								bhuaingh mé an charnnchuair</p>
+                                <time datetime="2009-11-13T20:00">PersonB • 3:44am</time>
+                            </div>
+                        </div>
+                    </div>
+					
+					<div class="row msg_container base_sent">
+                        <div class="col-md-10 col-xs-10">
+                            <div class="messages msg_sent">
+                                <p>Cúnas bóthair cailín baine mar a deirtear</p>
+                                <time datetime="2009-11-13T20:00">PersonA • 3:45am</time>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-2 avatar">
+                            <img src="{{STATIC_URL}}img/user1.png" class=" img-responsive ">
+                        </div>
+                    </div>
+					
+					
+					<div class="row msg_container base_receive">
+                        <div class="col-md-2 col-xs-2 avatar">
+                            <img src="{{STATIC_URL}}img/user2.png" class=" img-responsive ">
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <div class="messages msg_receive">
+                                <p>Modh Coinnealach</p>
+                                <time datetime="2009-11-13T20:00">PersonB • 3:46am </time>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+				
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+                        <span class="input-group-btn">
+                        <button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+                        </span>
+                    </div>
+                </div>
+    		</div>
+        </div>
+    </div>
+	
+	{% endblock %}

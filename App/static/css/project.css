@@ -1,0 +1,108 @@
+/* Css for the project overview page */
+
+
+
+/*Added a background colour that is slightly off white on every page, as this is easier on the user's eyes
+and is a trick used to make the user feel more at ease compared to if the screen was actually white*/
+
+body{
+background-color: #fdfdff
+}
+
+
+/* I wrote this for spacing and alignment, and it adds the line down the middle of the page
+in the form of a left border to the form column */ 
+
+.projCre8{
+ margin-left: -20px;
+ border-left: 1px solid #999999;
+ padding: 0px 30px;
+}
+
+
+
+/*-------------------------------
+TILE CSS
+-------------------------------*/
+
+tile
+{display:block;
+cursor:pointer;
+-webkit-perspective:0;
+-webkit-transform-style:preserve-3d;
+-webkit-transition:-webkit-transform .2s;
+min-width:75px;
+min-height:75px;
+text-align:center;
+opacity:.75;
+background-color:#2e8bcc;
+z-index:1;
+border:4px #fff solid;
+color:#fff}
+
+
+
+/*Colour of the tiles */
+
+.tile.tile-newCol
+{background-color:#6699cc}
+
+.tile.tile-silver
+{background-color:#bdc3c7}
+
+
+/* Other css for tiles including spacing */
+
+.tile
+{margin-top:50px;}
+
+.tile h1,.tile h2,.tile h3,.tile h4,.tile h5,.tile h6
+{color:#fff;-webkit-user-select:none;text-align:center}
+
+.tile h2
+{font-size:1.75em;margin-top:50px;margin-left:0px;text-align:center}
+
+.tile h1
+{margin-top:50px;}
+
+.tile h3,.tile h4
+{margin-top:-15px}
+
+.tile h1.tile-text,.tile h2.tile-text,.tile h3.tile-text,.tile h4.tile-text
+{margin-top:20px;text-align:center;}
+
+.tile a:hover
+{text-decoration:none}
+
+.tile img
+{border:0}
+
+.tile:hover
+{opacity:1}
+
+.tile .tile-label
+{position:absolute;bottom:10px;left:20px;font-size:14px;color:#fff}
+
+.tile .tile-content .tile-icon-large
+{margin-left:0;vertical-align:middle!important;text-align:center}
+
+.tile .tile-content
+{padding-top:20px;line-height:normal;position:relative;width:100%;-moz-box-sizing:border-box;box-sizing:border-box}
+
+a.fa-links
+{color:#fff}
+
+a.fa-links:hover,a.fa-links:focus
+{color:#fff}
+
+.tile.tile-small
+{height:70px;width:70px}
+
+.tile.tile-medium
+{height:150px;width:150px}
+
+.tile.tile-wide,.tile.tile-double
+{height:150px;width:310px}
+
+.tile.tile-large
+{height:310px;width:310px}

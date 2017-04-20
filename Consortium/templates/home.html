@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+<!-- This is the front page of our project. I designed it to look similar to a lot of new websites today,
+	 favouring scrolling over navigation, as is a trend with most recent website design, and aimed at mobile users.
+	 This page is responsive on mobile. Scrolling down tells the user about the site before they choose to register their
+	 details. All pictures on this page are covered by the CC0 license, meaning they can be used for free without attribution.
+	 As this was one of the first pages I wrote front end code for, it takes elements from some bootstrap templates and then
+	 alters them, whereas later pages are even more customized than this -->
+
+{% block head %}
+
+	<!-- CSS which corresponds to this page, which I put together from various bootstrap elements -->
+	<link href="{{ STATIC_URL }}css/landing.css" rel="stylesheet"> 
+	
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- Main banner for the top of the page. I started with a section of the jumbotron code, and customised both the html and the css
+	 quite a bit to create our own design -->
+    <div class="jumbotron">
+      <div class="container">
+        
+		<div class="col-lg-4"> <!-- I used bootstrap's grid system extensively to organise the layout of the site -->
+          <h1>Consortium</h1>
+		  <hr />
+          <p>A task manager for all of your group work needs.</p>
+		  <p>Connect with your group and get work done.</p>
+        </div>
+		
+		<div class="col-lg-4 col-md-offset-4"> <!-- Bootstraps grid system -->
+		
+			
+			<!-- The login form, for this I customised both the html and css that bootstrap uses to give a unique 
+			feel that looks quite different from the basic bootstrap form -->
+			
+			<form class="form-horizontal" action="/accounts/loginRequest/" method="post">
+			{% csrf_token %}
+				<fieldset>
+					<legend style="color:#fefeff">Login</legend>
+					<div class="form-group">{% csrf_token %}
+						<label for="username" class="col-lg-3 control-label">Email</label>
+						<div class="col-lg-8">
+							<input type="text" class="form-control" id="userN" name="username" placeholder="Email">
+						</div>
+					</div>
+					<div class="form-group">{% csrf_token %}
+						<label for="password" class="col-lg-3 control-label">Password</label>
+						<div class="col-lg-8">
+							<input type="password" class="form-control" id="pass" name="password" placeholder="Password">
+						</div>
+					</div>
+					{{error}}
+					<div class="form-group">{% csrf_token %}
+						<div class="col-lg-8 col-lg-offset-3">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+					
+				</fieldset>
+			</form>
+			
+			
+			
+			
+			
+			
+			
+			<!-- Registration Form, this is similar to the last form in that I customised it -->
+			
+			
+			<form class="form-horizontal" action="/accounts/addMember/" method="post">
+			{% csrf_token %}
+				<fieldset>
+					<legend style="color:#fefeff">Register</legend>
+					
+			
+					<div class="form-group">{% csrf_token %}
+						<label for="first_name" class="col-lg-3 control-label">First Name</label>
+						<div class="col-lg-8">
+							<input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+						</div>
+					</div>
+					
+					<div class="form-group">{% csrf_token %}
+						<label for="last_name" class="col-lg-3 control-label">Last Name</label>
+						<div class="col-lg-8">
+							<input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+						</div>
+					</div>
+					
+							
+					<div class="form-group">{% csrf_token %}
+						<label for="email" class="col-lg-3 control-label">Email</label>
+						<div class="col-lg-8">
+							<input type="text" class="form-control" id="email" name="email" placeholder="Email">
+						</div>
+					</div>
+					
+					
+					<div class="form-group">{% csrf_token %}
+						<label for="password" class="col-lg-3 control-label">Password</label>
+						<div class="col-lg-8">
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+						</div>
+					</div>
+					{{error}}
+					<div class="form-group">{% csrf_token %}
+						<div class="col-lg-8 col-lg-offset-3">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+      </div>
+    </div>
+
+	
+	<!-- This info section again works off of the header from the jumbotron template, but it has
+	been completely customized to become an information section instead of just a banner -->
+	
+	<div class="jumbotron2">
+      <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+          <h1>What is Consortium?</span></h1><hr />
+          <p>Consortium is a group project based task manager designed to help you keep on top of your project work. Be it for work, college or a side project, group projects can be hard to keep track of, so we created this web app to help you do just that. </p>
+		  <p>Each project you create can be managed simply and efficiently with the help of Consortium. So why not give it a try today?</p>
+        </div>
+      </div>
+    </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- This is code for the section containing three columns with pictures and text. It was based off of some code for 
+	the carousel template, but the css has been changed  -->
+
+    <div class="marketing">
+	  <div class="container">
+     
+	  
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-square" src="{{STATIC_URL}}img/cal4.png" alt="tasksImage" style="width: 140px; height: 140px;"> 
+          <h2>Tasks</h2>
+          <p>Keep up to date with your upcoming deadlines to ensure you never fall behind.</p>
+        </div>
+        
+		<div class="col-lg-4">
+          <img class="img-square" src="{{STATIC_URL}}img/mess3.png" alt="messengerImage" style="width: 140px; height: 140px;">
+          <h2>Messenger</h2>
+          <p>Chat with your team about your project, and track your progress. </p>
+      
+        </div>
+        
+		<div class="col-lg-4">
+          <img class="img-square" src="{{STATIC_URL}}img/people.png" alt="connectImage" style="width: 140px; height: 140px;"> 
+          <h2>Connect</h2>
+          <p>Connect with your group members and work towards your goals.</p>
+          
+        </div>
+     
+	  </div>
+	 </div>
+
+	 
+	 
+	 
+	 
+	<!-- Similar to another in this file, this info section again works off of the header from the jumbotron template, but it has
+	been completely customized to become an information section instead of just a banner -->
+	 
+	<div class="jumbotron3">
+      <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+          <h1>Interested in joining?</span></h1><hr />
+          <p>Register now to begin managing your projects. Create your project and invite your team members to join!</p>
+		  <p><a class="btn btn-primary" href="#" role="button">Register now! &raquo;</a></p> <!-- This button links back to the top of the page for easy registration -->
+        </div>
+      </div>
+    </div>
+	
+	
+	
+	<!-- As mentioned at the top of this file, any images I sourced for this site are free to use and do not require attribution -->
+	<p style="color:#bbbbbb; text-align:center">All pictures used on this site are under the CC0 License.</p>
+	 
+	
+	
+{% endblock %}

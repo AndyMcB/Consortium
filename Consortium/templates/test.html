@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+	{% block head %}
+	
+	<link href="{{ STATIC_URL }}css/pTasks.css" rel="stylesheet">
+	
+	{% endblock %}
+
+	{% block content %}
+	
+<div class="conHeader">
+
+	<div class="container">
+		
+		<div class="row">
+		
+			<div class="col-md-12">
+				<h2>{{pName}}'s Task Manager 
+				<span style="float:right">
+				<a href="http://danu6.it.nuigalway.ie:8667/projects/{{pName}}/" class="btn btn-primary">Back to "{{pName}}" &raquo</a></span></h2>
+				<hr />
+			</div>
+		</div>
+	
+	</div>
+		
+</div>
+
+
+<div class="container">
+	<div class="row" style="margin-top:35px;">
+	
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Your Tasks and Deadlines</h3>
+				</div>
+				<div class="panel-body" style="margin-top:20px">
+					<p><ul>
+						{% for task in pTask %}  <!-- Dynamic List of your tasks -->
+							{% if cur_user == task.user %}
+									<li><i>{{task.date}}: </i> {{task.descr}} </li>	<a href="#" class="btn btn-primary btn-xs" style="float:right;">Completed</a><br /><hr />				
+							{% endif %}
+						{% endfor %}
+					</ul></p>
+				</div>
+			</div>
+		</div>	
+		
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Group Tasks and Deadlines</h3>
+				</div>
+				<div class="panel-body" style="margin-top:20px">
+					<p>Each members name followed by tasks they have to do:
+					{% for name in pMember %}
+						<hr />  <!-- Displays a dynamic list of member tasks -->
+						<b><u>{{name.first_name}}:</b></u>
+						{% for task in pTask%}
+							{% if task.user  == name %}
+								<br /><i>{{task.date}}: </i>{{task.descr}} <br />
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>	
+		
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Post a Task for Someone</h3>
+				</div>
+				<div class="panel-body" style="margin-top:20px">
+					
+					<p>Do you need a group member to do a task?</p>
+					
+					<form class="form-horizontal" action="/projects/{{pName}}/addTask/" method="post">
+						{% csrf_token %}
+						<fieldset>
+							<legend></legend>
+							
+							
+							<div class="form-group">{% csrf_token %}
+								<label for="user" class="col-md-3 control-label">Person</label>
+								<div class="col-md-8">
+									<select class="form-control" name="user" id="user">
+											{% for name in pMember %}
+										  <option>{{name.first_name}}</option>
+											{% endfor %}
+									</select>
+								</div>
+							</div>
+								
+							
+							<div class="form-group">{% csrf_token %}
+								<label for="date" class="col-md-3 control-label">Due Date</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="date" name="date" placeholder="When is this task due?">
+								</div>
+							</div>
+							
+							
+							<div class="form-group">{% csrf_token %}
+								<label for="descr" class="col-md-3 control-label">Description</label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="descr" name="descr" placeholder="What is this task?">
+								</div>
+							</div>
+								
+							<div class="form-group">{% csrf_token %}
+								<div class="col-md-4 col-lg-offset-3">
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				</div>
+			</div>
+		</div>	
+		
+		
+	</div>	
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	{% endblock %}

@@ -1,0 +1,37 @@
+/*CSS for task manager pages */
+
+/*Added a background colour that is slightly off white on every page, as this is easier on the user's eyes
+and is a trick used to make the user feel more at ease compared to if the screen was actually white*/
+
+body{
+	background-color: #fdfdff;
+}
+
+
+/*CSS for the header that runs along the top of the screen */
+
+.conHeader{
+padding:0px 15px;
+margin-bottom:0px;
+color:#ff0000;
+text-align:left;
+background-color:#222222;
+background-size: 100% 100%;
+background-repeat:no-repeat;}
+
+ .conHeader h2{
+ margin-top:20px; 
+ color:#eef6ff}
+ 
+ .conHeader>hr{
+ border-top-color:#d5d5d5}
+ 
+ .container .conHeader,.container-fluid .conHeader{
+ border-radius:6px}
+ 
+ .conHeader .container{
+ max-width:100%}
+ 
+ @media screen and (min-width:768px){.conHeader{padding:10px 0}
+ .container .conHeader,.container-fluid .conHeader{padding-right:60px;padding-left:60px}
+}

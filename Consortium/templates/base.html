@@ -1,0 +1,123 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+	
+  <head>
+	<!-- Meta data -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Consortium</title>
+
+	
+	<!-- CSS for every page -->
+	
+    <!-- Bootstrap core CSS, this is a theme from bootswatch which I have also edited slightly, to give the site a different look -->
+    <link href="{{ STATIC_URL }}css/spacelab.css" rel="stylesheet">
+	 <!-- Custom css for starter template for base.html, this is for the navbar -->
+    <link href="{{ STATIC_URL }}css/starter-template.css" rel="stylesheet">
+	
+	
+	
+
+	<!--Any Page specific customized CSS that I've added -->
+	<!-- Block head allows the CSS just to be used for those pages -->
+	<!-- The CSS in these files has been custom, these are not files I have downloaded, but ones I have put together myself --> 
+	
+	{% block head %}
+	
+	<h1>Page CSS Failed to Load. Please go back.</h1>
+	
+	{% endblock %}
+	
+	 
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <body>
+
+	<!-- The header on the top of the screen, that includes the logout button -->
+  
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Consortium</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+		<span style="float:right"> <!-- I added this to have the logout button on the far right -->
+          <ul class="nav navbar-nav">
+		  
+			<li><a href="http://danu6.it.nuigalway.ie:8667/accounts/logout/"><font  color="blue">Logout</font></a></li>
+			<li><a href="http://danu6.it.nuigalway.ie:8667/admin/"><font  color="blue">Admin</font></a></li>
+          </ul></span>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- The block content tag allows us to fill in content for each individual page, and each has the navbar from this file included -->
+	
+	{% block content %}
+	
+	<p><center>Page Content Failed to Load. Please go back.</center></p>
+	
+	{% endblock %}
+	
+
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+	
+	<!-- JS for the chat window -->
+	<script src="{{ STATIC_URL }}js/chat.js"></script>
+	
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
+
